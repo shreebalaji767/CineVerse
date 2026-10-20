@@ -25,6 +25,7 @@ jobs:
         run: |
           mkdir -p dist
           cp index.html dist/index.html
+          cp manifest.webmanifest favicon.svg sw.js dist/
           if [ -f .nojekyll ]; then cp .nojekyll dist/.nojekyll; fi
       - name: Configure Pages
         uses: actions/configure-pages@v5
