@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#080808">
 <title>CineVerse</title>
 <style>
-:root{color-scheme:dark;--bg:#080808;--red:#e50914;--panel:#181818;--line:#373737;--muted:#aaa}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}.top{position:sticky;top:0;z-index:4;display:flex;align-items:center;justify-content:space-between;padding:17px clamp(14px,4vw,48px);background:#080808f2;border-bottom:1px solid #222}.logo{color:var(--red);font-weight:950;letter-spacing:-1.5px;font-size:clamp(21px,3vw,32px)}.logo span{color:white}.gallery{padding:clamp(12px,3vw,32px);display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(7px,1.2vw,16px)}.poster{position:relative;display:block;width:100%;aspect-ratio:2/3;overflow:hidden;padding:0;border:1px solid #252525;border-radius:5px;background:#181818;cursor:pointer;transition:transform .18s,border-color .18s}.poster:hover,.poster:focus-visible{transform:scale(1.025);border-color:#888;outline:2px solid #fff;outline-offset:1px}.poster img{display:block;width:100%;height:100%;object-fit:cover}.poster img.broken{visibility:hidden}.poster:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,#0008);pointer-events:none}.gate{position:fixed;inset:0;z-index:10;display:none;align-items:center;justify-content:center;padding:16px;background:#000d}.gate.open{display:flex}.sheet{position:relative;width:min(420px,100%);padding:30px 24px 24px;border:1px solid #555;border-radius:9px;background:linear-gradient(160deg,#242424,#101010);box-shadow:0 20px 90px #000;text-align:center}.lock{font-size:36px;margin-bottom:8px}.sheet h1{font-size:25px;margin:8px 0}.sheet p{color:#ccc;line-height:1.55;margin:10px 0 20px}.price{font-size:30px;font-weight:900;margin:14px 0 4px}.sub{color:#aaa;font-size:12px}.pay{width:100%;display:block;margin-top:10px;padding:13px;border:0;border-radius:5px;background:var(--red);color:white;font-size:14px;font-weight:800;cursor:pointer}.pay.alt{background:#303030;border:1px solid #555}.pay:hover{filter:brightness(1.12)}.close{position:absolute;right:10px;top:8px;width:34px;height:34px;border:0;border-radius:50%;background:#333;color:white;font-size:22px;cursor:pointer}.notice{min-height:18px;color:#ffb4b4!important;font-size:13px;margin-bottom:0!important}.footer{height:20px}@media(max-width:1050px){.gallery{grid-template-columns:repeat(5,minmax(0,1fr))}}@media(max-width:760px){.gallery{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:480px){.gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.top{padding:14px}.sheet{padding:28px 18px 20px}}
+:root{color-scheme:dark;--bg:#080808;--red:#e50914;--panel:#181818;--line:#373737;--muted:#aaa}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}.top{position:sticky;top:0;z-index:4;display:flex;align-items:center;justify-content:space-between;padding:17px clamp(14px,4vw,48px);background:#080808f2;border-bottom:1px solid #222}.logo{color:var(--red);font-weight:950;letter-spacing:-1.5px;font-size:clamp(21px,3vw,32px)}.logo span{color:white}.gallery{padding:clamp(12px,3vw,32px);display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(7px,1.2vw,16px)}.poster{position:relative;display:block;width:100%;aspect-ratio:2/3;overflow:hidden;padding:0;border:1px solid #252525;border-radius:5px;background:#181818;cursor:pointer;transition:transform .18s,border-color .18s}.poster:hover,.poster:focus-visible{transform:scale(1.025);border-color:#888;outline:2px solid #fff;outline-offset:1px}.poster img{display:block;width:100%;height:100%;object-fit:cover}.poster img.broken{visibility:hidden}.poster:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,#0008);pointer-events:none}.gate{position:fixed;inset:0;z-index:10;display:none;align-items:center;justify-content:center;padding:16px;background:#000d}.gate.open{display:flex}.sheet{position:relative;width:min(420px,100%);padding:30px 24px 24px;border:1px solid #555;border-radius:9px;background:linear-gradient(160deg,#242424,#101010);box-shadow:0 20px 90px #000;text-align:center}.lock{font-size:36px;margin-bottom:8px}.sheet h1{font-size:25px;margin:8px 0}.sheet p{color:#ccc;line-height:1.55;margin:10px 0 20px}.price{font-size:30px;font-weight:900;margin:14px 0 4px}.sub{color:#aaa;font-size:12px}.pay{width:100%;display:block;margin-top:10px;padding:13px;border:0;border-radius:5px;background:var(--red);color:white;font-size:14px;font-weight:800;cursor:pointer}.pay.alt{background:#303030;border:1px solid #555}.pay:hover{filter:brightness(1.12)}.close{position:absolute;right:10px;top:8px;width:34px;height:34px;border:0;border-radius:50%;background:#333;color:white;font-size:22px;cursor:pointer}.notice{min-height:18px;color:#ffb4b4!important;font-size:13px;margin-bottom:0!important}.demo-label{display:inline-block;margin:0 auto 8px;padding:5px 9px;border:1px solid #d7a84b;border-radius:999px;color:#ffd98b;font-size:11px;font-weight:800;letter-spacing:.08em}.method-list{display:grid;gap:8px;margin:16px 0;text-align:left}.method{display:flex;align-items:center;gap:10px;padding:11px;border:1px solid #555;border-radius:6px;background:#222;cursor:pointer}.method:has(input:checked){border-color:#e50914;background:#301315}.method input{accent-color:#e50914}.disclaimer{font-size:11px!important;color:#aaa!important;margin:12px 0 0!important}.footer{height:20px}@media(max-width:1050px){.gallery{grid-template-columns:repeat(5,minmax(0,1fr))}}@media(max-width:760px){.gallery{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:480px){.gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.top{padding:14px}.sheet{padding:28px 18px 20px}}
 </style>
 </head>
 <body>
@@ -15,14 +15,16 @@
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
 <section class="sheet">
 <button class="close" id="close" aria-label="Close">×</button>
+<div class="demo-label">SIMULATION ONLY · NO REAL PAYMENT</div>
 <div class="lock" aria-hidden="true">🔒</div>
 <h1 id="gate-title">Premium Access</h1>
 <p>This title is behind our extremely exclusive viewing gate.</p>
 <div class="price">₹999 <span style="font-size:14px;font-weight:500">/ unlock</span></div>
-<div class="sub">Taxes, convenience fees and cinematic vibes may apply.</div>
-<button class="pay" id="pay">Unlock this title</button>
+<div class="sub">A pretend checkout for demonstration purposes only.</div>
+<button class="pay" id="pay">Continue to demo checkout</button>
 <button class="pay alt" id="premium">Upgrade to Ultra Mega Premium</button>
 <p class="notice" id="notice" aria-live="polite"></p>
+<p class="disclaimer">No payment gateway is connected. Do not enter real payment details. No money can be collected or charged.</p>
 </section>
 </div>
 <script>
@@ -84,7 +86,45 @@ titles.forEach(function(t,i){
 document.getElementById("close").addEventListener("click",closeGate);
 gate.addEventListener("click",function(e){if(e.target===gate)closeGate()});
 document.addEventListener("keydown",function(e){if(e.key==="Escape")closeGate()});
-document.getElementById("pay").addEventListener("click",function(){notice.textContent="Checkout is experiencing a premium-level outage. Please try paying with imagination."});
+document.getElementById("pay").addEventListener("click",function(){
+ const sheet=document.querySelector(".sheet");
+ sheet.innerHTML=`
+ <button class="close" id="close" aria-label="Close">×</button>
+ <div class="demo-label">DEMO CHECKOUT · NOT A REAL TRANSACTION</div>
+ <div class="lock" aria-hidden="true">🧪</div>
+ <h1>Mock Payment Gateway</h1>
+ <p id="checkout-title">Unlock your selected title for this demo.</p>
+ <div class="price">₹999</div>
+ <p class="sub">Test screen only. No real payment details are requested.</p>
+ <div class="method-list" role="radiogroup" aria-label="Choose simulated payment method">
+  <label class="method"><input type="radio" name="demo-method" value="UPI" checked> UPI (simulated)</label>
+  <label class="method"><input type="radio" name="demo-method" value="Card"> Debit / credit card (simulated)</label>
+  <label class="method"><input type="radio" name="demo-method" value="Net banking"> Net banking (simulated)</label>
+ </div>
+ <button class="pay" id="simulate">Simulate payment</button>
+ <button class="pay alt" id="back">Cancel</button>
+ <p class="notice" id="notice" aria-live="polite"></p>
+ <p class="disclaimer">SIMULATION ONLY. No gateway, bank, UPI app, card network, or payment processor is contacted. No money is charged.</p>`;
+ document.getElementById("checkout-title").textContent=chosen ? "Demo unlock for: "+chosen.title : "Unlock your selected title for this demo.";
+ document.getElementById("close").addEventListener("click",closeGate);
+ document.getElementById("back").addEventListener("click",closeGate);
+ document.getElementById("simulate").addEventListener("click",function(){
+  const method=document.querySelector('input[name="demo-method"]:checked');
+  const methodName=method ? method.value : "demo method";
+  document.querySelector(".sheet").innerHTML=`
+   <button class="close" id="close" aria-label="Close">×</button>
+   <div class="demo-label">DEMO RESULT · NO MONEY MOVED</div>
+   <div class="lock" aria-hidden="true">✅</div>
+   <h1>Simulated payment complete</h1>
+   <p>This is a fictional success screen using <strong>${methodName}</strong>. No payment was made and no title was actually purchased.</p>
+   <div class="price" style="font-size:20px">DEMO-ONLY</div>
+   <p class="sub">Reference: DEMO-CV-999</p>
+   <button class="pay" id="done">Return to CineVerse</button>
+   <p class="disclaimer">No payment information was collected. No real gateway was contacted.</p>`;
+  document.getElementById("close").addEventListener("click",closeGate);
+  document.getElementById("done").addEventListener("click",closeGate);
+ });
+});
 document.getElementById("premium").addEventListener("click",function(){notice.textContent="Ultra Mega Premium costs one moon, three dragons and a very good review. Checkout unavailable."});
 </script>
 </body>
