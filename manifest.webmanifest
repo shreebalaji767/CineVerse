@@ -1,0 +1,16 @@
+{
+  "id": "./",
+  "name": "CineVerse",
+  "short_name": "CineVerse",
+  "description": "A responsive movie, drama, anime and manga poster catalog. No video streaming.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#080808",
+  "theme_color": "#080808",
+  "icons": [
+    { "src": "./favicon.svg", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "./favicon.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
