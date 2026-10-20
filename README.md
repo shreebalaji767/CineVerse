@@ -1,35 +1,48 @@
 # CineVerse
 
-A responsive, static movie and drama discovery website with a Netflix-inspired dark interface.
+CineVerse is a deliberately over-the-top, static movie-poster parody with a pretend premium paywall. It is a visual joke, not a streaming service and not a real checkout.
 
-## Features
+## Cost
 
-- Visible category tiles for Movies, TV Series, K-Drama, C-Drama, J-Drama, Anime, Documentaries, Indian Cinema, Family and Classics.
-- Search across titles, genres, countries, languages and descriptions.
-- Working category, genre, year and language filters.
-- Title detail modal with descriptions and external viewing links.
-- Watchlist saved in browser `localStorage`; no accounts or database.
-- Responsive poster grid and navigation.
-- One Internet Archive embed for the listed *Night of the Living Dead* edition; other entries link to platform/provider search pages rather than pretending that unverified streams are playable.
-- Plain HTML, CSS and JavaScript. No build step, package manager or backend.
+- **Build cost: ₹0** using plain HTML, CSS and JavaScript.
+- No paid hosting or build tool is required. GitHub Pages can host this static repository at no charge within GitHub's applicable usage terms.
+- No paid APIs, frameworks, package installs, server, or build command.
 
-## Run locally
+## What visitors see
 
-Open `index.html` in a modern browser, or serve the directory with any static web server.
+- A responsive, dark poster gallery containing movie and series artwork.
+- The site intentionally shows posters only in the gallery: no search box, title descriptions, categories, watchlist, or episode/player interface.
+- Clicking any poster opens a mock premium-access panel.
+- The displayed ₹999 unlock price and upgrade option are parody UI only. Buttons produce joke messages and do not unlock or play anything.
 
-## Deploy on GitHub Pages
+## Payments and privacy
 
-1. Open this repository's **Settings → Pages**.
+- **There is no payment gateway.** No payment can be made or collected.
+- The site does not request card details, UPI IDs, bank details, passwords, email addresses, or other payment information.
+- No database, backend, login, analytics, cookies, or `localStorage` is used.
+- No user selections or visitor information are saved.
+- The mock checkout buttons only update text in the page; they do not contact a payment service.
+
+## Media and copyright
+
+- The gallery loads poster artwork from external image URLs. An internet connection is needed to load those images, and third-party image URLs may change or fail.
+- This project does not host or stream movies, television episodes, or other video.
+- Poster artwork and names may be copyrighted or trademarked by their respective owners. This is a fan-made parody/catalog display, not an official service or endorsement. For public deployment, use artwork you have rights or permission to display and follow the relevant providers' terms.
+- No poster click opens an unauthorized stream, paid platform, or external checkout.
+
+## Files and implementation
+
+- `index.html`: the entire site, including styles, gallery data, and interaction logic.
+- `.nojekyll`: lets GitHub Pages publish the root files without Jekyll processing.
+- `README.md`: project behavior, limitations, privacy, and deployment notes. These implementation details are intentionally documented here rather than displayed on the site.
+
+The page is a static front end. It can be opened directly in a modern browser.
+
+## GitHub Pages deployment
+
+1. Open **Settings → Pages** in this repository.
 2. Under **Build and deployment**, choose **Deploy from a branch**.
-3. Choose branch **main** and folder **/(root)**, then save.
-4. Wait for GitHub Pages to publish the site. The public URL will appear in the Pages settings.
+3. Select branch `main` and folder `/(root)`, then save.
+4. Wait for GitHub Pages to publish. The final URL appears in the Pages settings; for this repository it is normally `https://shreebalaji767.github.io/CineVerse/`.
 
-The site files are in the repository root, so no build command is required.
-
-## Content and licensing
-
-CineVerse is a discovery catalog, not a hosting service for copyrighted movies or episodes. External links may require a subscription and their availability varies by country. Check each provider's rights and licensing information before watching. An Internet Archive listing does not automatically mean every uploaded edition is public domain in every jurisdiction. Posters are illustrative remote images and may be unavailable if their image host changes.
-
-## Privacy
-
-The site has no backend, account system, analytics or database. The watchlist is stored locally in the visitor's browser. Clearing browser site data removes it.
+No other setup is required.
