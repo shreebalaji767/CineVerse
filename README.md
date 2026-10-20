@@ -1,48 +1,46 @@
 # CineVerse
 
-CineVerse is a static poster-gallery parody/catalog for movies, dramas, anime, manga, and donghua. Its premium checkout is a **simulation only**—not a real payment service.
+CineVerse is a responsive, static catalog for movie and TV posters, K-drama, C-drama, Japanese drama, anime, manga, donghua, and more. It provides poster browsing and title descriptions only; it does not host or stream films, episodes, or manga pages.
 
 ## Features
 
-- Responsive dark poster gallery with search and category filters.
-- Categories include latest 2026 titles, Hollywood, K-drama, C-drama, Japanese drama, anime, manga, donghua, Indian cinema, classics, and documentaries.
-- Catalog includes titles across multiple eras, from classic films to newer releases.
-- Clicking a poster opens the ₹999 mock premium paywall.
-- The demo checkout offers simulated UPI, card, and net-banking choices, then displays a clearly labeled simulated receipt with a demo-only reference and timestamp.
-- Some artwork URLs are official distributor images; other catalog items use visual placeholders. Third-party image URLs may change or fail.
+- Responsive poster grid, search, and category filters for mobile, tablet, and desktop.
+- Custom CineVerse logo and SVG favicon.
+- Progressive Web App (PWA) manifest, install button where supported, and service-worker app-shell caching for basic offline access.
+- Clicking a poster opens a premium demo flow; completing the demo and closing its receipt opens that title's description and metadata.
+- Optional official-information links are provided where available.
 
-## Payment simulation and safety
+## Checkout and privacy
 
-- **No real payment gateway is integrated.**
-- The checkout never asks for card numbers, CVV, UPI IDs, bank credentials, or other real payment information.
-- The demo receipt is explicitly marked **SIMULATION ONLY / NOT A REAL TRANSACTION**. Its reference is prefixed with `DEMO-CV-` and is not proof of payment.
-- No bank, UPI app, card network, or payment processor is contacted. No money can be collected or charged.
-- No title is actually purchased or unlocked by the simulation.
-- No backend, database, login, analytics, cookies, or `localStorage` is used. The simulated receipt is generated in the browser and is not saved.
+- The checkout is a **simulation only**. It does not process purchases or unlock paid content.
+- Demo UPI, card, and net-banking choices never request payment credentials.
+- Demo receipts are clearly marked as not proof of payment and use browser-generated references. No bank, UPI app, card network, or payment processor is contacted; no money can be charged.
+- There is no backend, database, login, analytics, cookies, or `localStorage`. Demo unlock status exists only in the current page session.
+- Never enter real payment information into this site.
 
-## Cost and technology
+## PWA installation
 
-- Static HTML, CSS, and JavaScript; no framework, package installation, build tool, or paid API is required.
-- GitHub Pages can host a public static site at no charge within GitHub's applicable usage terms.
-- No movie or episode video is hosted or streamed by this repository.
+The app can be installed when served over HTTPS by a compatible browser. On supported browsers, use **Install app**. On iOS, open the browser's Share menu and choose **Add to Home Screen**. Browser support and install prompts vary by device and browser.
 
-## Media and copyright
+The service worker caches the static app shell. Poster images are hosted externally, so they may not be available offline.
 
-- Artwork is loaded from external URLs, so an internet connection is needed and third-party images may stop working.
-- Some manga/donghua/catalog artwork is a placeholder rather than the official cover. Release information and availability can change; this is a manually curated static catalog, not a live or automatically updated database.
-- Posters, logos, and titles may be copyrighted or trademarked by their respective owners. This is not an official service or endorsement. For public deployment, use artwork you have permission or rights to display and comply with providers' terms.
+## Catalog and media notes
+
+- The catalog is manually curated, not a live release feed. Some newer titles and international animation entries use placeholder artwork, and external image URLs can change or fail.
+- Title availability, dates, and official links may vary by region.
+- Posters, logos, and names may be copyrighted or trademarked by their owners. Use artwork you have permission to display and follow providers' terms.
 
 ## Files
 
-- `index.html`: gallery, catalog entries, filters, paywall, and mock checkout/receipt.
-- `.nojekyll`: prevents Jekyll processing for static publishing.
-- `.github/workflows/pages.yml`: builds and deploys the static site to GitHub Pages on pushes to `main`.
-- `README.md`: project behavior, privacy, and deployment notes.
+- `index.html`: catalog, styles, demo checkout, and title details.
+- `favicon.svg`: brand icon and PWA icon source.
+- `manifest.webmanifest`: PWA metadata.
+- `sw.js`: service worker for app-shell caching.
+- `.github/workflows/pages.yml`: GitHub Pages build/deploy workflow; copies all PWA assets to the published artifact.
+- `README.md`: project documentation.
 
-## GitHub Pages deployment
+## GitHub Pages
 
-The workflow is committed on `main` and deploys on each push. In repository **Settings → Pages**, set **Build and deployment → Source** to **GitHub Actions** if it is not already selected. Then check the **Actions** tab for the deployment result.
+The workflow deploys on pushes to `main`. In **Settings → Pages**, set **Build and deployment → Source** to **GitHub Actions** if needed.
 
-The expected project URL is:
-
-https://shreebalaji767.github.io/CineVerse/
+Expected URL: https://shreebalaji767.github.io/CineVerse/
