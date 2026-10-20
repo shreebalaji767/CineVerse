@@ -6,12 +6,32 @@
 <meta name="theme-color" content="#080808">
 <title>CineVerse</title>
 <style>
-:root{color-scheme:dark;--bg:#080808;--red:#e50914;--panel:#181818;--line:#373737;--muted:#aaa}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}.top{position:sticky;top:0;z-index:4;display:flex;align-items:center;justify-content:space-between;padding:17px clamp(14px,4vw,48px);background:#080808f2;border-bottom:1px solid #222}.logo{color:var(--red);font-weight:950;letter-spacing:-1.5px;font-size:clamp(21px,3vw,32px)}.logo span{color:white}.gallery{padding:clamp(12px,3vw,32px);display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(7px,1.2vw,16px)}.poster{position:relative;display:block;width:100%;aspect-ratio:2/3;overflow:hidden;padding:0;border:1px solid #252525;border-radius:5px;background:#181818;cursor:pointer;transition:transform .18s,border-color .18s}.poster:hover,.poster:focus-visible{transform:scale(1.025);border-color:#888;outline:2px solid #fff;outline-offset:1px}.poster img{display:block;width:100%;height:100%;object-fit:cover}.poster img.broken{visibility:hidden}.poster:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,#0008);pointer-events:none}.gate{position:fixed;inset:0;z-index:10;display:none;align-items:center;justify-content:center;padding:16px;background:#000d}.gate.open{display:flex}.sheet{position:relative;width:min(420px,100%);padding:30px 24px 24px;border:1px solid #555;border-radius:9px;background:linear-gradient(160deg,#242424,#101010);box-shadow:0 20px 90px #000;text-align:center}.lock{font-size:36px;margin-bottom:8px}.sheet h1{font-size:25px;margin:8px 0}.sheet p{color:#ccc;line-height:1.55;margin:10px 0 20px}.price{font-size:30px;font-weight:900;margin:14px 0 4px}.sub{color:#aaa;font-size:12px}.pay{width:100%;display:block;margin-top:10px;padding:13px;border:0;border-radius:5px;background:var(--red);color:white;font-size:14px;font-weight:800;cursor:pointer}.pay.alt{background:#303030;border:1px solid #555}.pay:hover{filter:brightness(1.12)}.close{position:absolute;right:10px;top:8px;width:34px;height:34px;border:0;border-radius:50%;background:#333;color:white;font-size:22px;cursor:pointer}.notice{min-height:18px;color:#ffb4b4!important;font-size:13px;margin-bottom:0!important}.demo-label{display:inline-block;margin:0 auto 8px;padding:5px 9px;border:1px solid #d7a84b;border-radius:999px;color:#ffd98b;font-size:11px;font-weight:800;letter-spacing:.08em}.method-list{display:grid;gap:8px;margin:16px 0;text-align:left}.method{display:flex;align-items:center;gap:10px;padding:11px;border:1px solid #555;border-radius:6px;background:#222;cursor:pointer}.method:has(input:checked){border-color:#e50914;background:#301315}.method input{accent-color:#e50914}.disclaimer{font-size:11px!important;color:#aaa!important;margin:12px 0 0!important}.footer{height:20px}@media(max-width:1050px){.gallery{grid-template-columns:repeat(5,minmax(0,1fr))}}@media(max-width:760px){.gallery{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:480px){.gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.top{padding:14px}.sheet{padding:28px 18px 20px}}
+:root{color-scheme:dark;--bg:#080808;--red:#e50914;--panel:#181818;--line:#373737;--muted:#aaa}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}.top{position:sticky;top:0;z-index:4;display:flex;align-items:center;justify-content:space-between;padding:17px clamp(14px,4vw,48px);background:#080808f2;border-bottom:1px solid #222}.logo{color:var(--red);font-weight:950;letter-spacing:-1.5px;font-size:clamp(21px,3vw,32px)}.logo span{color:white}.gallery{padding:clamp(12px,3vw,32px);display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(7px,1.2vw,16px)}.poster{position:relative;display:block;width:100%;aspect-ratio:2/3;overflow:hidden;padding:0;border:1px solid #252525;border-radius:5px;background:#181818;cursor:pointer;transition:transform .18s,border-color .18s}.poster:hover,.poster:focus-visible{transform:scale(1.025);border-color:#888;outline:2px solid #fff;outline-offset:1px}.poster img{display:block;width:100%;height:100%;object-fit:cover}.poster img.broken{visibility:hidden}.poster:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,#0008);pointer-events:none}.gate{position:fixed;inset:0;z-index:10;display:none;align-items:center;justify-content:center;padding:16px;background:#000d}.gate.open{display:flex}.sheet{position:relative;width:min(420px,100%);padding:30px 24px 24px;border:1px solid #555;border-radius:9px;background:linear-gradient(160deg,#242424,#101010);box-shadow:0 20px 90px #000;text-align:center}.lock{font-size:36px;margin-bottom:8px}.sheet h1{font-size:25px;margin:8px 0}.sheet p{color:#ccc;line-height:1.55;margin:10px 0 20px}.price{font-size:30px;font-weight:900;margin:14px 0 4px}.sub{color:#aaa;font-size:12px}.pay{width:100%;display:block;margin-top:10px;padding:13px;border:0;border-radius:5px;background:var(--red);color:white;font-size:14px;font-weight:800;cursor:pointer}.pay.alt{background:#303030;border:1px solid #555}.pay:hover{filter:brightness(1.12)}.close{position:absolute;right:10px;top:8px;width:34px;height:34px;border:0;border-radius:50%;background:#333;color:white;font-size:22px;cursor:pointer}.notice{min-height:18px;color:#ffb4b4!important;font-size:13px;margin-bottom:0!important}.demo-label{display:inline-block;margin:0 auto 8px;padding:5px 9px;border:1px solid #d7a84b;border-radius:999px;color:#ffd98b;font-size:11px;font-weight:800;letter-spacing:.08em}.method-list{display:grid;gap:8px;margin:16px 0;text-align:left}.method{display:flex;align-items:center;gap:10px;padding:11px;border:1px solid #555;border-radius:6px;background:#222;cursor:pointer}.method:has(input:checked){border-color:#e50914;background:#301315}.method input{accent-color:#e50914}.disclaimer{font-size:11px!important;color:#aaa!important;margin:12px 0 0!important}.catalog-tools{padding:18px clamp(12px,3vw,32px) 0;display:grid;gap:12px}.search-row{display:flex;gap:10px;align-items:center}.searchbox{width:100%;min-width:0;padding:12px 14px;border:1px solid #3b3b3b;border-radius:6px;background:#151515;color:#fff;font:inherit}.searchbox:focus{outline:2px solid #777}.category-row{display:flex;gap:8px;overflow-x:auto;padding:2px 0 7px;scrollbar-width:thin}.category{flex:0 0 auto;border:1px solid #444;border-radius:999px;background:#1b1b1b;color:#ddd;padding:9px 13px;font-size:12px;font-weight:700;cursor:pointer}.category.active,.category:hover{background:#fff;color:#111;border-color:#fff}.catalog-meta{display:flex;justify-content:space-between;gap:12px;color:#999;font-size:12px;padding:0 clamp(12px,3vw,32px)}.poster{background:linear-gradient(145deg,#242424,#111)}.poster:focus-visible{outline-offset:2px}.poster .poster-art{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding:12px;background:linear-gradient(160deg,#262626,#111);color:#fff;text-align:center;font-size:13px;font-weight:900;letter-spacing:.04em}.poster .poster-art span{position:relative;z-index:1;text-shadow:0 2px 8px #000}.poster .year-tag{position:absolute;z-index:2;top:7px;left:7px;padding:4px 6px;border-radius:3px;background:#e50914;color:white;font-size:9px;font-weight:900;letter-spacing:.06em}.poster .title-tag{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:20px 6px 7px;background:linear-gradient(transparent,#000d);font-size:11px;font-weight:700;text-align:left;opacity:0;transition:opacity .15s}.poster:hover .title-tag,.poster:focus-visible .title-tag{opacity:1}.no-results{grid-column:1/-1;padding:40px 12px;text-align:center;color:#aaa}.receipt{position:relative;overflow:hidden;text-align:left!important;border:1px solid #555;border-radius:8px;padding:16px;background:#111}.receipt:after{content:"DEMO";position:absolute;right:-7px;top:42px;transform:rotate(-25deg);font-size:36px;font-weight:1000;letter-spacing:5px;color:#ffffff0b;pointer-events:none}.receipt-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed #444;font-size:12px}.receipt-row strong{text-align:right;overflow-wrap:anywhere}.status-demo{display:inline-block;border:1px solid #d7a84b;border-radius:4px;padding:6px 8px;color:#ffd98b;font-size:10px;font-weight:900;letter-spacing:.06em}.receipt-note{font-size:11px!important;color:#bbb!important;margin:12px 0 0!important}.footer{height:20px}@media(max-width:1050px){.gallery{grid-template-columns:repeat(5,minmax(0,1fr))}}@media(max-width:760px){.gallery{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:480px){.gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.top{padding:14px}.sheet{padding:28px 18px 20px}}
 </style>
 </head>
 <body>
 <header class="top"><div class="logo">CINE<span>VERSE</span></div></header>
-<main><div id="gallery" class="gallery" aria-label="Movie and series posters"></div></main>
+<main>
+<section class="catalog-tools" aria-label="Browse catalog">
+ <div class="search-row"><input class="searchbox" id="search" type="search" placeholder="Search titles, genres, or years…" aria-label="Search titles, genres, or years"></div>
+ <nav class="category-row" id="categories" aria-label="Filter catalog">
+  <button class="category active" data-category="All">All titles</button>
+  <button class="category" data-category="Latest">Latest · 2026</button>
+  <button class="category" data-category="Hollywood">Hollywood</button>
+  <button class="category" data-category="K-Drama">K-Drama</button>
+  <button class="category" data-category="C-Drama">C-Drama</button>
+  <button class="category" data-category="J-Drama">Japan drama</button>
+  <button class="category" data-category="Anime">Anime</button>
+  <button class="category" data-category="Manga">Manga</button>
+  <button class="category" data-category="Donghua">Donghua</button>
+  <button class="category" data-category="Indian Cinema">Indian cinema</button>
+  <button class="category" data-category="Classics">Classics</button>
+  <button class="category" data-category="Documentaries">Documentaries</button>
+ </nav>
+</section>
+<div class="catalog-meta"><span id="catalog-count">Loading titles…</span><span>1936 — 2026 · poster gallery</span></div>
+<div id="gallery" class="gallery" aria-label="Movie, drama, anime, manga and donghua posters"></div>
+</main>
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
 <section class="sheet">
 <button class="close" id="close" aria-label="Close">×</button>
@@ -62,7 +82,19 @@ const titles = [
 {id:"modern-times",title:"Modern Times",category:"Classics",year:1936,language:"English",country:"United States",genre:["Comedy","Classic"],type:"Movie",poster:"https://image.tmdb.org/t/p/w500/7uoiKOEjxBBW0AgDGQWrlfGQe4.jpg",description:"Charlie Chaplin's classic comedy about industrial life. Some editions may be freely available; verify the rights status of the specific upload.",free:true,official:"https://archive.org/search?query=Modern%20Times%201936%20Chaplin"},
 {id:"public-domain-film",title:"Public-Domain Film Collection",category:"Movies",year:2024,language:"English",country:"Various",genre:["Classic","Drama"],type:"Movie",poster:"https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=600&q=80",description:"Explore films listed by Internet Archive. Public-domain status can differ by title, edition and country, so review each item's rights notes before watching.",free:true,official:"https://archive.org/details/movies"},
 {id:"ted-ed",title:"TED-Ed: Lessons Worth Sharing",category:"Documentaries",year:2024,language:"English",country:"Various",genre:["Education","Science","Documentary"],type:"Series",poster:"https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80",description:"Animated educational videos about science, history and ideas. Watch free through the official TED-Ed channel.",free:true,official:"https://www.youtube.com/@TEDEd"},
-{id:"studio-ghibli",title:"Studio Ghibli Collection",category:"Anime",year:2024,language:"Japanese",country:"Japan",genre:["Anime","Fantasy","Family"],type:"Movie",poster:"https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",description:"Discover acclaimed Japanese animation. This is a collection guide; individual films are typically available through licensed providers, not as a guaranteed free stream.",official:"https://www.justwatch.com/us/search?q=Studio%20Ghibli"}
+{id:"studio-ghibli",title:"Studio Ghibli Collection",category:"Anime",year:2024,language:"Japanese",country:"Japan",genre:["Anime","Fantasy","Family"],type:"Movie",poster:"https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",description:"Discover acclaimed Japanese animation. This is a collection guide; individual films are typically available through licensed providers, not as a guaranteed free stream.",official:"https://www.justwatch.com/us/search?q=Studio%20Ghibli"},
+{id:"project-hail-mary-2026",title:"Project Hail Mary",category:"Hollywood",year:2026,language:"English",country:"United States",genre:["Science Fiction","Adventure"],type:"Movie",poster:"https://www.sonypictures.in/sites/india/files/2026-02/PHM_Social_Social_1Sheet_1MB.jpg",description:"A science teacher wakes aboard a spacecraft on a mission to save the Sun.",trending:true,official:"https://www.sonypictures.in/movies/project-hail-mary"},
+{id:"super-mario-galaxy-2026",title:"The Super Mario Galaxy Movie",category:"Hollywood",year:2026,language:"English",country:"United States",genre:["Animation","Adventure","Family"],type:"Movie",poster:"https://images.contentstack.io/v3/assets/blt13adb7e2033fcee5/bltc1902be5a724814d/69f2494ff44fdff368fd7f76/SuperMarioGalaxyMovie_keyart_Poster.jpg?width=1200",description:"Mario and friends set off on a galaxy-spanning adventure.",trending:true,official:"https://www.universalpicturesathome.com/movies/the-super-mario-galaxy-movie"},
+{id:"avengers-doomsday-2026",title:"Avengers: Doomsday",category:"Hollywood",year:2026,language:"English",country:"United States",genre:["Action","Science Fiction","Superhero"],type:"Movie",poster:"https://lumiere-a.akamaihd.net/v1/images/g_movies_avengersdoomsday_poster_b81ec5ee.jpeg?region=0%2C0%2C1300%2C1950",description:"Marvel Studios' upcoming superhero film, scheduled for December 2026.",trending:true,official:"https://movies.disney.com/avengers-doomsday"},
+{id:"devil-wears-prada-2-2026",title:"The Devil Wears Prada 2",category:"Hollywood",year:2026,language:"English",country:"United States",genre:["Comedy","Drama"],type:"Movie",poster:"https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=85",description:"A 2026 fashion-world sequel. Poster art is a visual placeholder; title and release details should be checked with the official distributor.",trending:true,official:"https://www.20thcenturystudios.com/"},
+{id:"one-piece-manga",title:"One Piece · Manga",category:"Manga",year:1997,language:"Japanese",country:"Japan",genre:["Manga","Adventure","Fantasy"],type:"Manga",poster:"https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?auto=format&fit=crop&w=700&q=85",description:"Long-running pirate adventure manga. Cover art is a gallery placeholder; no manga pages are hosted here.",official:"https://www.viz.com/one-piece"},
+{id:"solo-leveling-manga",title:"Solo Leveling · Manga",category:"Manga",year:2018,language:"Korean",country:"South Korea",genre:["Manhwa","Action","Fantasy"],type:"Manga",poster:"https://images.unsplash.com/photo-1614583225154-5fcdda07019e?auto=format&fit=crop&w=700&q=85",description:"Fantasy action manhwa about a hunter who grows stronger after a mysterious awakening. Cover art is a gallery placeholder.",official:"https://www.webtoons.com/"},
+{id:"the-kings-avatar-donghua",title:"The King's Avatar",category:"Donghua",year:2017,language:"Mandarin",country:"China",genre:["Donghua","Esports","Action"],type:"Donghua",poster:"https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=700&q=85",description:"Chinese animated series centered on a professional esports player. Artwork is a gallery placeholder; check licensed services for viewing.",official:"https://www.youtube.com/results?search_query=The+King%27s+Avatar+official+donghua"},
+{id:"link-click",title:"Link Click",category:"Donghua",year:2021,language:"Mandarin",country:"China",genre:["Donghua","Mystery","Thriller"],type:"Donghua",poster:"https://images.unsplash.com/photo-1535016120720-40c646be5580?auto=format&fit=crop&w=700&q=85",description:"A supernatural mystery series about entering photographs to uncover the past. Artwork is a gallery placeholder.",official:"https://www.youtube.com/results?search_query=Link+Click+official+donghua"},
+{id:"we-are-aliens-2026",title:"We Are Aliens",category:"Anime",year:2026,language:"Japanese",country:"Japan",genre:["Anime","Science Fiction","Drama"],type:"Movie",poster:"https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=700&q=85",description:"A Japanese-French animated feature scheduled for a September 2026 Japanese release. Artwork shown here is a placeholder.",trending:true,official:"https://www.crunchyroll.com/news/latest/2026/7/27/we-are-aliens-anime-film-main-trailer-visual"},
+{id:"made-in-korea-2-2026",title:"Made in Korea · Season 2",category:"K-Drama",year:2026,language:"Korean",country:"South Korea",genre:["K-Drama","Thriller","Drama"],type:"Series",poster:"https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=700&q=85",description:"Listed in 2026 Korean drama release roundups; poster artwork is a placeholder and release details can change.",trending:true,official:"https://dramawanderlust.com/all-kdramas-2026/"},
+{id:"oldboy-classic",title:"Oldboy",category:"Classics",year:2003,language:"Korean",country:"South Korea",genre:["Thriller","Mystery","Classic"],type:"Movie",poster:"https://image.tmdb.org/t/p/w500/4sHeTAp65WrSSuc05nRBKddhBxO.jpg",description:"A landmark Korean neo-noir thriller from 2003.",official:"https://www.justwatch.com/"}
+
 ];
 const gallery=document.getElementById("gallery");
 const gate=document.getElementById("gate");
@@ -76,13 +108,43 @@ const posterFallbacks=[
 function imageFor(t,i){return t.poster||posterFallbacks[i%posterFallbacks.length]}
 function showGate(t){chosen=t;notice.textContent="";gate.classList.add("open");document.body.style.overflow="hidden"}
 function closeGate(){gate.classList.remove("open");document.body.style.overflow="";chosen=null}
-titles.forEach(function(t,i){
- const button=document.createElement("button");
- button.className="poster";button.type="button";button.setAttribute("aria-label","Open premium title");
- const img=document.createElement("img");img.loading="lazy";img.alt="";img.src=imageFor(t,i);
- img.onerror=function(){if(img.dataset.fallback){img.classList.add("broken")}else{img.dataset.fallback="1";img.src=posterFallbacks[(i+1)%posterFallbacks.length]}};
- button.appendChild(img);button.addEventListener("click",function(){showGate(t)});gallery.appendChild(button);
-});
+let activeCategory="All";
+const searchInput=document.getElementById("search");
+const countLabel=document.getElementById("catalog-count");
+function matchesCategory(t){
+ if(activeCategory==="All")return true;
+ if(activeCategory==="Latest")return t.year===2026;
+ if(activeCategory==="Hollywood")return t.category==="Hollywood"||(["United States","United Kingdom"].includes(t.country)&&!["Documentaries","Classics"].includes(t.category));
+ if(activeCategory==="Documentaries")return t.category==="Documentaries";
+ return t.category===activeCategory||t.genre.includes(activeCategory);
+}
+function renderGallery(){
+ const q=searchInput.value.trim().toLowerCase();
+ const filtered=titles.filter(function(t){
+  const hay=[t.title,t.category,t.year,t.language,t.country,t.type].concat(t.genre||[]).join(" ").toLowerCase();
+  return matchesCategory(t)&&(!q||hay.includes(q));
+ }).sort(function(a,b){return b.year-a.year||a.title.localeCompare(b.title)});
+ gallery.innerHTML="";
+ countLabel.textContent=filtered.length+" titles";
+ if(!filtered.length){const empty=document.createElement("div");empty.className="no-results";empty.textContent="No titles found. Try another search or category.";gallery.appendChild(empty);return}
+ filtered.forEach(function(t,i){
+  const button=document.createElement("button");
+  button.className="poster";button.type="button";button.setAttribute("aria-label","Open demo premium checkout for "+t.title);
+  const img=document.createElement("img");img.loading="lazy";img.alt="";img.src=imageFor(t,i);
+  img.onerror=function(){if(img.dataset.fallback){img.classList.add("broken");const art=document.createElement("div");art.className="poster-art";art.innerHTML="<span></span>";art.firstChild.textContent=t.title;button.insertBefore(art,button.firstChild)}else{img.dataset.fallback="1";img.src=posterFallbacks[(i+1)%posterFallbacks.length]}};
+  button.appendChild(img);
+  if(t.year>=2026){const tag=document.createElement("span");tag.className="year-tag";tag.textContent="2026";button.appendChild(tag)}
+  const titleTag=document.createElement("span");titleTag.className="title-tag";titleTag.textContent=t.title+" · "+t.year;button.appendChild(titleTag);
+  button.addEventListener("click",function(){showGate(t)});gallery.appendChild(button);
+ });
+}
+document.querySelectorAll(".category").forEach(function(btn){btn.addEventListener("click",function(){
+ activeCategory=btn.dataset.category;
+ document.querySelectorAll(".category").forEach(function(b){b.classList.toggle("active",b===btn)});
+ renderGallery();
+})});
+searchInput.addEventListener("input",renderGallery);
+renderGallery();
 document.getElementById("close").addEventListener("click",closeGate);
 gate.addEventListener("click",function(e){if(e.target===gate)closeGate()});
 document.addEventListener("keydown",function(e){if(e.key==="Escape")closeGate()});
@@ -111,16 +173,26 @@ document.getElementById("pay").addEventListener("click",function(){
  document.getElementById("simulate").addEventListener("click",function(){
   const method=document.querySelector('input[name="demo-method"]:checked');
   const methodName=method ? method.value : "demo method";
+  const demoTime=new Date();
+  const demoRef="DEMO-CV-"+demoTime.getFullYear()+String(demoTime.getMonth()+1).padStart(2,"0")+String(demoTime.getDate()).padStart(2,"0")+"-"+Math.random().toString(36).slice(2,8).toUpperCase();
+  const demoTitle=chosen ? chosen.title : "Premium title";
   document.querySelector(".sheet").innerHTML=`
    <button class="close" id="close" aria-label="Close">×</button>
-   <div class="demo-label">DEMO RESULT · NO MONEY MOVED</div>
-   <div class="lock" aria-hidden="true">✅</div>
-   <h1>Simulated payment complete</h1>
-   <p>This is a fictional success screen using <strong>${methodName}</strong>. No payment was made and no title was actually purchased.</p>
-   <div class="price" style="font-size:20px">DEMO-ONLY</div>
-   <p class="sub">Reference: DEMO-CV-999</p>
+   <div class="demo-label">SIMULATED RECEIPT · NOT A REAL TRANSACTION</div>
+   <div class="lock" aria-hidden="true">🧾</div>
+   <h1>Demo checkout result</h1>
+   <p>This receipt is generated locally for preview only. No money moved and no title was purchased.</p>
+   <div class="receipt">
+    <span class="status-demo">SIMULATION ONLY · NOT PAID</span>
+    <div class="receipt-row"><span>Demo reference</span><strong>${demoRef}</strong></div>
+    <div class="receipt-row"><span>Item</span><strong>${demoTitle}</strong></div>
+    <div class="receipt-row"><span>Demo amount</span><strong>₹999.00 INR</strong></div>
+    <div class="receipt-row"><span>Selected method</span><strong>${methodName} (simulated)</strong></div>
+    <div class="receipt-row"><span>Timestamp</span><strong>${demoTime.toLocaleString()}</strong></div>
+    <div class="receipt-row"><span>Result</span><strong>SIMULATED SUCCESS</strong></div>
+   </div>
    <button class="pay" id="done">Return to CineVerse</button>
-   <p class="disclaimer">No payment information was collected. No real gateway was contacted.</p>`;
+   <p class="receipt-note">DEMO RECEIPT — not proof of payment. No bank, UPI app, card network, or payment gateway was contacted. Do not use this as a real transaction receipt.</p>`;
   document.getElementById("close").addEventListener("click",closeGate);
   document.getElementById("done").addEventListener("click",closeGate);
  });
