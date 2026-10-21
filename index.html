@@ -28,7 +28,7 @@
 .method-check{margin-left:auto;width:17px;height:17px;border:1px solid #666;border-radius:50%}
 .checkout-method:has(input:checked) .method-check{border:5px solid #e50914;background:#fff}
 .checkout-status{margin:15px 0 0;color:#bdbdbd;font-size:11px;line-height:1.5}
-.checkout-status.error{color:#ffd0a8}
+.checkout-status.error{color:#ffd0a8}.checkout-status.success{color:#8ff0b0;padding:12px;border:1px solid #27633b;border-radius:8px;background:#102318;font-size:12px}
 .checkout-submit{width:100%;margin-top:12px;padding:14px;border:0;border-radius:7px;background:#e50914;color:#fff;font-size:14px;font-weight:850;cursor:pointer}
 .checkout-submit:hover{filter:brightness(1.12)}.checkout-submit:focus-visible{outline:2px solid #fff;outline-offset:3px}
 .checkout-foot{text-align:center;color:#777;font-size:10px;margin:14px 0 0}
@@ -249,12 +249,12 @@ renderGallery();
 
 const checkoutOverlay=document.getElementById("checkout-overlay");
 const checkoutStatus=document.getElementById("checkout-status");
-function openCheckout(){const title=document.getElementById("detail-title").textContent.trim();document.getElementById("checkout-item").textContent=title||"Premium access";checkoutStatus.textContent="Online payments are not available yet. No charge will be made.";checkoutStatus.classList.remove("error");checkoutOverlay.classList.add("open");document.body.style.overflow="hidden"}
+function openCheckout(){const title=document.getElementById("detail-title").textContent.trim();document.getElementById("checkout-item").textContent=title||"Premium access";checkoutStatus.textContent="Demo checkout: continuing will simulate a successful payment. No money will be deducted.";checkoutStatus.classList.remove("error","success");document.getElementById("checkout-submit").textContent="Continue · ₹999.00";checkoutOverlay.classList.add("open");document.body.style.overflow="hidden"}
 function closeCheckout(){checkoutOverlay.classList.remove("open");document.body.style.overflow=details.classList.contains("open")?"hidden":""}
 document.getElementById("checkout-launch").addEventListener("click",openCheckout);
 document.getElementById("checkout-close").addEventListener("click",closeCheckout);
 checkoutOverlay.addEventListener("click",function(e){if(e.target===checkoutOverlay)closeCheckout()});
-document.getElementById("checkout-submit").addEventListener("click",function(){checkoutStatus.textContent="Payment cannot be completed right now because online payments are not available. No charge was made.";checkoutStatus.classList.add("error")});
+document.getElementById("checkout-submit").addEventListener("click",function(){checkoutStatus.textContent="✓ Payment successful! No payment is deducted from your account — this was a simulation.";checkoutStatus.classList.remove("error");checkoutStatus.classList.add("success");document.getElementById("checkout-submit").textContent="Simulation complete ✓"});
 
 document.getElementById("detail-close").addEventListener("click",closeDetails);details.addEventListener("click",function(e){if(e.target===details)closeDetails()});document.addEventListener("keydown",function(e){if(e.key==="Escape"){if(checkoutOverlay.classList.contains("open"))closeCheckout();else if(details.classList.contains("open"))closeDetails()}});
 </script>
