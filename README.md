@@ -1,46 +1,86 @@
-# CineVerse
+# NPCBook
 
-CineVerse is a responsive, static catalog for movie and TV posters, K-drama, C-drama, Japanese drama, anime, manga, donghua, and more. It provides poster browsing and title descriptions only; it does not host or stream films, episodes, or manga pages.
+**NPCBook** is a fictional, text-first social feed where original characters from anime-inspired worlds, fantasy realms, sci-fi settings, supernatural towns, dramas, and more share ordinary moments, gossip, rivalries, strange jobs, and wonderfully chaotic problems.
+
+The characters have their own lives and perspectives. They speak from inside their worlds and do not refer to themselves as fictional characters or acknowledge an audience, authors, chapters, or a story being told.
+
+**Live repository:** https://github.com/shreebalaji767/NPCBook
 
 ## Features
 
-- Responsive poster grid, search, and category filters for mobile, tablet, and desktop.
-- Custom CineVerse logo and SVG favicon.
-- Progressive Web App (PWA) manifest, install button where supported, and service-worker app-shell caching for basic offline access.
-- Clicking a poster opens a premium demo flow; completing the demo and closing its receipt opens that title's description and metadata.
-- Optional official-information links are provided where available.
+### A feed from many worlds
+- A randomized selection of worlds and posts is assembled when the page loads or refreshes.
+- Posts cover everyday life, relationships, training, magic, work, travel, mysteries, and absurd mishaps.
+- World labels, genre filters, search, feed views, and sorting help you explore the feed.
+- The content is text-first, with stylized post cards and mood icons rather than a catalog of external media.
+- NPC posts are handcrafted in the page source; the site does not generate new dialogue with a live AI service.
 
-## Checkout and privacy
+### Fictional names and character profiles
+- NPCs use distinct, realistic-sounding fictional names and natural-looking usernames.
+- Select a character's name or avatar to open their profile.
+- Profile cards show the character's world, a short in-world bio, profile stats, and recent moments.
+- Follow or unfollow characters to explore a feed centered on the people you choose.
 
-- The checkout is a **simulation only**. It does not process purchases or unlock paid content.
-- Demo UPI, card, and net-banking choices never request payment credentials.
-- Demo receipts are clearly marked as not proof of payment and use browser-generated references. No bank, UPI app, card network, or payment processor is contacted; no money can be charged.
-- There is no backend, database, login, analytics, cookies, or `localStorage`. Demo unlock status exists only in the current page session.
-- Never enter real payment information into this site.
+### Social interactions
+- **Like** and unlike posts.
+- **Comment** on posts and read the visible conversation.
+- **Reshare** a post into the current feed.
+- **Save** posts for the Saved view.
+- **Follow** and unfollow characters.
+- **Screenshot** creates a downloadable PNG card containing the post's character name, handle, world, and text.
+- Share and interaction feedback is shown in the interface as you use it.
 
-## PWA installation
+### Create a post
+Use the post composer to write a status update for your own universe persona. Choose a name, username, universe category, mood, and icon, then publish the post into the current feed.
 
-The app can be installed when served over HTTPS by a compatible browser. On supported browsers, use **Install app**. On iOS, open the browser's Share menu and choose **Add to Home Screen**. Browser support and install prompts vary by device and browser.
+### Responsive design
+The dark, neon-accented interface is designed for desktop and smaller screens, with navigation, a central feed, discovery panels, and profile dialogs.
 
-The service worker caches the static app shell. Poster images are hosted externally, so they may not be available offline.
+## Privacy and persistence
 
-## Catalog and media notes
+NPCBook is a browser-only front-end demo:
+- No backend, database, account system, or server-side profile storage is required.
+- Likes, comments, follows, saves, reshares, and created posts are held in the current page's memory and are **not permanent**.
+- Refreshing the page resets in-session interactions and loads a new randomized selection of worlds and posts.
+- The screenshot feature generates a PNG locally in the browser.
+- No live AI service is used to write posts.
 
-- The catalog is manually curated, not a live release feed. Some newer titles and international animation entries use placeholder artwork, and external image URLs can change or fail.
-- Title availability, dates, and official links may vary by region.
-- Posters, logos, and names may be copyrighted or trademarked by their owners. Use artwork you have permission to display and follow providers' terms.
+Do not assume that an interaction will still be present after refreshing the page.
 
-## Files
+## Run locally
 
-- `index.html`: catalog, styles, demo checkout, and title details.
-- `favicon.svg`: brand icon and PWA icon source.
-- `manifest.webmanifest`: PWA metadata.
-- `sw.js`: service worker for app-shell caching.
-- `.github/workflows/pages.yml`: GitHub Pages build/deploy workflow; copies all PWA assets to the published artifact.
-- `README.md`: project documentation.
+1. Download or clone this repository.
+2. Open `index.html` in a modern browser.
 
-## GitHub Pages
+For local testing with service-worker or installable-app behavior, serve the folder through a local HTTP server rather than opening the file directly. Browser support for installation and offline behavior varies.
 
-The workflow deploys on pushes to `main`. In **Settings → Pages**, set **Build and deployment → Source** to **GitHub Actions** if needed.
+## Deploy with GitHub Pages
 
-Expected URL: https://shreebalaji767.github.io/CineVerse/
+1. Open the repository's **Settings → Pages**.
+2. Choose **GitHub Actions** as the deployment source if a workflow is configured, or choose the appropriate branch/folder publishing option for the repository.
+3. Open the published Pages URL shown in repository settings after deployment completes.
+
+## Project files
+
+- `index.html` — page structure, styles, NPC roster and post content, randomized feed, profile dialogs, composer, and browser-side interactions.
+- `README.md` — project documentation.
+- `favicon.svg` and `manifest.webmanifest` — referenced by the page for browser identity and app metadata, if present in the repository.
+- Service-worker or deployment files may be present depending on the current repository setup.
+
+## Current limitations
+
+- The roster and posts are curated in the source code, not retrieved from a live service.
+- Profile details and bios are lightweight front-end views, not full persistent user accounts.
+- Interactions are temporary and are lost on refresh.
+- Reshares are local feed entries; they are not published to another service or shared with other visitors.
+- Screenshot export saves a generated image of the post text and metadata; it does not capture the entire browser window.
+- Some browser features, such as native share, clipboard access, file downloads, and installation, depend on browser support and permissions.
+
+## Contributing
+
+When adding NPCs or writing new posts:
+- Use distinct, believable fictional names and handles.
+- Keep each character's vocabulary, responsibilities, relationships, and humor appropriate to their own world.
+- Keep jokes in-world. Characters should not mention being fictional, authors, chapters, viewers, fan theories, filming, or the fact that they are in a story.
+- Prefer concise posts with a specific everyday detail, surprising complication, or character-driven punchline.
+- Avoid duplicating existing names and usernames.
