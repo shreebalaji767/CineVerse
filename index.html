@@ -240,7 +240,7 @@ function renderGallery(){
   const card=document.createElement("div");card.className="poster-card";
   const button=document.createElement("button");
   button.className="poster";button.type="button";button.setAttribute("aria-label","Open details for "+t.title);
-  const img=document.createElement("img");img.loading="lazy";img.decoding="async";img.alt=t.title+" poster artwork";
+  const img=document.createElement("img");img.loading=renderedCount<18?"eager":"lazy";img.decoding="async";img.alt=t.title+" poster artwork";
   img.onerror=function(){showPosterFallback(t,img,button)};
   button.appendChild(img);
   if(posterUrl)img.src=posterUrl;else showPosterFallback(t,img,button);
