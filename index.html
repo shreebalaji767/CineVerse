@@ -133,13 +133,26 @@ function renderGallery(){
   return matchesCategory(t)&&(!q||hay.includes(q));
  }).sort(function(a,b){return b.year-a.year||a.title.localeCompare(b.title)});
  gallery.innerHTML="";
- countLabel.textContent=filtered.length+" titles";
- if(!filtered.length){const empty=document.createElement("div");empty.className="no-results";empty.textContent="No titles found. Try another search or category.";gallery.appendChild(empty);return}
+ if(!filtered.length){countLabel.textContent="0 titles";const empty=document.createElement("div");empty.className="no-results";empty.textContent="No titles found. Try another search or category.";gallery.appendChild(empty);return}
  const seenPosters=new Set();
- filtered.forEach(function(t,i){
-  const posterUrl=t.poster||"";
-  if(posterUrl&&seenPosters.has(posterUrl))return;
-  if(posterUrl)seenPosters.add(posterUrl);
+ const seenTitleIds=new Set();
+ let renderedCount=0;
+ filtered.forEach(function(t){
+  const posterUrl=(t.poster||"").trim();
+  let posterKey="";
+  if(posterUrl){
+   try{
+    const parsed=new URL(posterUrl,window.location.href);
+    posterKey=(parsed.origin+parsed.pathname).toLowerCase();
+   }catch(error){
+    posterKey=posterUrl.split(/[?#]/)[0].trim().toLowerCase();
+   }
+  }
+  const titleKey=String(t.id||"").trim().toLowerCase();
+  if((posterKey&&seenPosters.has(posterKey))||(titleKey&&seenTitleIds.has(titleKey)))return;
+  if(posterKey)seenPosters.add(posterKey);
+  if(titleKey)seenTitleIds.add(titleKey);
+  renderedCount++;
   const button=document.createElement("button");
   button.className="poster";button.type="button";button.setAttribute("aria-label","Open demo premium checkout for "+t.title);
   if(posterUrl){
@@ -153,6 +166,7 @@ function renderGallery(){
   const titleTag=document.createElement("span");titleTag.className="title-tag";titleTag.textContent=t.title+" · "+t.year;button.appendChild(titleTag);
   button.addEventListener("click",function(){showGate(t)});gallery.appendChild(button);
  });
+ countLabel.textContent=renderedCount+" titles";
 }
 document.querySelectorAll(".category").forEach(function(btn){btn.addEventListener("click",function(){
  activeCategory=btn.dataset.category;
