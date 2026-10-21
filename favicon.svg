@@ -1,1 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512"><defs><linearGradient id="u" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff4fa3"/><stop offset=".52" stop-color="#9b5cff"/><stop offset="1" stop-color="#62e5e0"/></linearGradient></defs><rect width="512" height="512" rx="112" fill="#101016"/><rect x="48" y="48" width="416" height="416" rx="112" fill="url(#u)"/><path d="M256 88l35 91 98 5-76 61 25 95-82-53-82 53 25-95-76-61 98-5z" fill="#fff"/><circle cx="256" cy="256" r="150" fill="none" stroke="#ffffff" stroke-opacity=".22" stroke-width="8"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-labelledby="title desc">
+<title id="title">NPCBook</title><desc id="desc">A glowing multiverse portal shaped like overlapping conversation bubbles with an N monogram.</desc>
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#171329"/><stop offset="1" stop-color="#080b16"/></linearGradient>
+ <linearGradient id="portal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff4fa3"/><stop offset=".48" stop-color="#9860ff"/><stop offset="1" stop-color="#62e5e0"/></linearGradient>
+ <linearGradient id="letter" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#d9d8ff"/></linearGradient>
+ <filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="12"/></filter>
+</defs>
+<rect width="512" height="512" rx="116" fill="url(#bg)"/>
+<circle cx="256" cy="244" r="172" fill="#9860ff" opacity=".22" filter="url(#glow)"/>
+<rect x="77" y="88" width="278" height="248" rx="82" fill="url(#portal)" transform="rotate(-8 216 212)"/>
+<path d="M112 287 94 365 177 333" fill="#ff4fa3"/>
+<rect x="154" y="148" width="278" height="248" rx="82" fill="#10111f" stroke="url(#portal)" stroke-width="15" transform="rotate(7 293 272)"/>
+<path d="M351 349 414 393 407 324" fill="#62e5e0"/>
+<path d="M191 333V181h35l90 94V181h36v152h-34l-91-96v96z" fill="url(#letter)" stroke="#ffffff" stroke-opacity=".12" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="404" cy="112" r="12" fill="#62e5e0"/><circle cx="109" cy="411" r="8" fill="#ff4fa3"/><path d="m387 78 7 16 17 2-13 11 4 17-15-9-14 9 4-17-13-11 17-2z" fill="#fff" opacity=".88"/>
+</svg>
