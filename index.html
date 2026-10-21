@@ -211,7 +211,7 @@ const liked=new Set(),saved=new Set(),chaosReacted=new Set(),shocked=new Set(),f
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function normalizePostText(value){
  return String(value??"")
-  .replace(/\\\\[nN]/g,"\n")
+  .replace(/\\[nN]/g,"\n")
   .replace(/\\r\\n/g,"\n")
   .replace(/\\r/g,"\n")
   .replace(/\r\n?/g,"\n")
