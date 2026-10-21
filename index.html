@@ -114,7 +114,7 @@ async function findRealPoster(t){
  const key=String(t.title||"").trim().toLowerCase();
  if(posterCache.has(key))return posterCache.get(key);
  const task=(async function(){
-  const title=String(t.title||"").replace(/\s*[·:].*$/,"").trim();
+  const title=String(t.title||"").replace(/\s*·.*$/,"").trim();
   try{
    const summary=await fetch("https://en.wikipedia.org/api/rest_v1/page/summary/"+encodeURIComponent(title),{headers:{"Accept":"application/json"}});
    if(summary.ok){const data=await summary.json();if(data.thumbnail&&data.thumbnail.source&&!/disambiguation/i.test(data.type||""))return data.thumbnail.source}
