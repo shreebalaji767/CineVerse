@@ -153,7 +153,7 @@ async function findRealPoster(t){
   try{
    const url="https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch="+encodeURIComponent(title+" film television series anime")+"&gsrnamespace=0&gsrlimit=6&prop=pageimages&piprop=thumbnail&pithumbsize=600&format=json&origin=*";
    const response=await fetch(url);
-   if(response.ok){const data=await response.json();const pages=Object.values((data.query&&data.query.pages)||{});const exact=pages.find(function(page){return page.thumbnail&&page.title&&page.title.toLowerCase()===title.toLowerCase()});const candidate=exact||pages.find(function(page){return page.thumbnail});if(candidate&&candidate.thumbnail&&candidate.thumbnail.source)return candidate.thumbnail.source}
+   if(response.ok){const data=await response.json();const pages=Object.values((data.query&&data.query.pages)||{});const normalizeTitle=function(value){return String(value||"").toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim()};const exact=pages.find(function(page){return page.thumbnail&&page.title&&normalizeTitle(page.title)===normalizeTitle(title)});if(exact&&exact.thumbnail&&exact.thumbnail.source)return exact.thumbnail.source}
   }catch(error){}
   return "";
  })();
