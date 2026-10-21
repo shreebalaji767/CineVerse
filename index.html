@@ -263,29 +263,18 @@ function openProfile(id){
 }
 function screenshotPost(p){const canvas=document.createElement("canvas"),width=1080,pad=64,ctx=canvas.getContext("2d");ctx.font="27px Arial";const words=p.text.split(/\s+/),lines=[];let line="";for(const word of words){const test=line?line+" "+word:word;if(ctx.measureText(test).width>width-pad*2&&line){lines.push(line);line=word}else line=test}if(line)lines.push(line);const height=260+lines.length*43;canvas.width=width;canvas.height=height;const c=canvas.getContext("2d"),grad=c.createLinearGradient(0,0,width,height);grad.addColorStop(0,"#211b31");grad.addColorStop(1,"#121b25");c.fillStyle=grad;c.fillRect(0,0,width,height);c.fillStyle="#ff70b5";c.font="bold 23px Arial";c.fillText("✦ NPCBook",pad,55);c.fillStyle="#d5a4ff";c.font="bold 20px Arial";c.fillText(p.world+" / "+p.realm,pad,100);c.fillStyle="#ffffff";c.font="bold 30px Arial";c.fillText(p.name,pad,151);c.fillStyle="#aaa6bb";c.font="20px Arial";c.fillText(p.handle,pad,184);c.fillStyle="#f4f3fa";c.font="27px Arial";lines.forEach((ln,i)=>c.fillText(ln,pad,240+i*43));c.fillStyle="#a7a1b8";c.font="18px Arial";c.fillText("A moment from a world of its own",pad,height-30);const a=document.createElement("a");a.download=(p.name.toLowerCase().replace(/[^a-z0-9]+/g,"-")||"npc")+"-npcbook.png";a.href=canvas.toDataURL("image/png");a.click();toast("Screenshot saved as a PNG.")}
 
-let deferredInstallPrompt=null;
 const installButton=$("install-app");
 function showInstallHelp(){
   const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent)&&!window.MSStream;
   toast(isIOS?"To install: tap Share, then Add to Home Screen.":"To install, open your browser menu and choose Install app or Add to Home screen.");
 }
-window.addEventListener("beforeinstallprompt",event=>{
-  event.preventDefault();
-  deferredInstallPrompt=event;
-  installButton?.classList.add("install-ready");
-  if(installButton) installButton.querySelector("span").textContent="Install app";
-});
+// Let the browser manage its own install UI. Calling preventDefault() here
+// suppresses that UI and produces a console warning until prompt() is called.
 window.addEventListener("appinstalled",()=>{
-  deferredInstallPrompt=null;
-  if(installButton){installButton.querySelector("span").textContent="Installed";installButton.disabled=true;}
+  if(installButton){const label=installButton.querySelector("span");if(label)label.textContent="Installed";installButton.disabled=true;}
   toast("NPCBook has been installed.");
 });
-installButton?.addEventListener("click",async()=>{
-  if(!deferredInstallPrompt){showInstallHelp();return;}
-  deferredInstallPrompt.prompt();
-  await deferredInstallPrompt.userChoice;
-  deferredInstallPrompt=null;
-});
+installButton?.addEventListener("click",showInstallHelp);
 if("serviceWorker" in navigator && (location.protocol==="https:"||location.hostname==="localhost")){
   window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
 }
