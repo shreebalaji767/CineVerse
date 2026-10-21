@@ -148,11 +148,64 @@ const voices={
 ]};
 const worldNames=Object.keys(voices);
 const commentsPool=[
-["By the old gods, what a mess.","I would have done the same, honestly."],["The whole kingdom has heard about this.","Respectfully, that was a terrible idea."],["Who approved this royal decree?","The royal clerk has fled the country."],["I support your terrible decisions.","Please put this on a tavern mug."],["I have seen worse at the guild hall.","May your next meal be less cursed."]]
+["THE GOOSE HAS UNIONIZED. THIS IS NOT A DRILL.","The goose has retained a second goose as counsel."],
+["Respectfully, I am calling a wizard and a municipal inspector.","The wizard is the inspector. This explains so much."],
+["Please stop feeding the prophecy after midnight.","It has learned to open cupboards."],
+["Who gave the cursed object administrative privileges?","It has already changed everyone's passwords."],
+["I blinked and now the mayor is three raccoons in a coat.","They are doing a surprisingly good job."],
+["Can confirm: the soup is legally a person in seven districts.","The soup has requested voting rights."],
+["The council has denied everything, including the existence of the council.","The council has sent a cease-and-desist to this comment."],
+["I have seen this omen before. It was a coupon.","The coupon expires at the end of time."],
+["Someone put the moon in rice. We are monitoring the situation.","The rice is glowing and asking for a lawyer."],
+["Emergency meeting at the fountain. Bring a spoon and your next of kin.","The fountain is chairing the meeting."],
+["I support this disaster, but only in writing.","My quill has resigned."],
+["The pigeons are asking follow-up questions.","They have formed a committee."],
+["Please keep all portals inside the designated portal area.","One has applied for a parking permit."],
+["This is why we cannot have a normal Tuesday.","Tuesday has filed a complaint."],
+["The prophecy has been forwarded to payroll.","Payroll has predicted layoffs."],
+["Whoever taught the dragon about taxes owes us all an apology.","The dragon is now auditing the king."],
+["Update: the chair is now in charge. It seems fair.","The chair has strong leadership energy."],
+["Nobody panic. The panic has already been booked in advance.","The panic is double-booked."],
+["The floor is whispering my full legal name again.","Mine knows my middle name. I'm moving."],
+["Has anyone tried turning the kingdom off and on again?","The kingdom is asking for an update first."]
+];
+const chaosAftershocks=[
+"BREAKING: a goose in a tiny sash has declared itself acting mayor and immediately banned soup.",
+"Three suspiciously confident mushrooms have formed a tribunal and are demanding everyone's left shoe.",
+"An unrelated wizard has arrived carrying a clipboard that is on fire and insisting this is standard procedure.",
+"The local pigeons have issued a statement in crumbs. Nobody can agree on the punctuation.",
+"Someone has put the entire incident on a payment plan with a haunted vending machine.",
+"A horse has been appointed spokesperson because it was the only one who read the paperwork.",
+"The nearest mirror has started giving unsolicited legal advice and is somehow winning every argument.",
+"At press time, the moon is wearing a fake moustache and refusing to answer questions.",
+"The town bell rang thirteen times, then sent an invoice for emotional damages.",
+"A tiny man emerged from a cupboard, shouted 'I KNEW IT,' and vanished into a smaller cupboard.",
+"The official explanation is now three raccoons in a robe. They have declined to elaborate.",
+"Local authorities have asked everyone to stop naming the anomalies. The anomalies are responding to the names.",
+"A committee of deeply offended ducks has blocked the main road until morale improves.",
+"The emergency backup plan is a second, slightly angrier emergency.",
+"The incident has been downgraded from catastrophe to 'weird weather with paperwork.'",
+"Someone has accidentally promoted a potato to regional manager. It is already cutting budgets.",
+"A nearby portal is leaking lukewarm custard. Experts describe this as 'not ideal.'",
+"The royal archivist has eaten the evidence and is requesting a nap.",
+"A swarm of tiny accountants has begun measuring the vibes and charging by the minute.",
+"The situation is under control, according to a man currently being chased by his own hat.",
+"The nearest dragon has filed a noise complaint against the screaming volcano.",
+"A haunted wheelbarrow is offering rides. The reviews are alarmingly positive.",
+"All clocks now display 'probably.' The palace says this is a minor update.",
+"A flock of ravens has started a neighborhood watch and immediately reported the sun.",
+"The official mascot has become sentient and is demanding dental coverage.",
+"The weather forecast is 80% chance of spoons, with scattered emotional damage.",
+"The royal mint has accidentally printed money with a picture of a very disappointed frog.",
+"Every door in the building now opens into the same suspiciously small bakery.",
+"The town's loudest goat has been appointed judge because it already interrupts everyone.",
+"A second moon has appeared. It is smaller, angrier, and demanding parking validation."
+];
 const shuffle=a=>{const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b};
+function chaosText(base){const beats=shuffle(chaosAftershocks).slice(0,2);return base+"\\n\\nBREAKING UPDATE: "+beats[0]+"\\n\\nALSO, SOMEHOW: "+beats[1]}
 const chosenWorlds=shuffle(worlds).slice(0,16);
 const savedWorlds=new Set();
-let posts=chosenWorlds.map((w,i)=>{const roster=voices[w[0]]||voices[worldNames[i%worldNames.length]];const person=roster[Math.floor(Math.random()*roster.length)];return{id:"npc-"+i,name:person[0],handle:person[1],world:w[0],realm:w[1],text:person[2],time:["just now","1 min ago","3 min ago","7 min ago","12 min ago","21 min ago","39 min ago","1 hour ago"][i%8],likes:Math.floor(Math.random()*18000)+12,comments:Math.random()>.55?[{name:"Concerned Bystander",text:shuffle(commentsPool)[0][0]}]:[],following:Math.random()>.7}});
+let posts=chosenWorlds.map((w,i)=>{const roster=voices[w[0]]||voices[worldNames[i%worldNames.length]];const person=roster[Math.floor(Math.random()*roster.length)];return{id:"npc-"+i,name:person[0],handle:person[1],world:w[0],realm:w[1],text:chaosText(person[2]),time:["just now","1 min ago","3 min ago","7 min ago","12 min ago","21 min ago","39 min ago","1 hour ago"][i%8],likes:Math.floor(Math.random()*18000)+12,comments:Math.random()>.42?[{name:shuffle(["Concerned Bystander","Local Goose Lawyer","Unpaid Wizard Intern","Pigeon With Admin Access","The Soup Witness","Regional Chaos Clerk"])[0],text:shuffle(commentsPool)[0][0]}]:[],following:Math.random()>.7}});
 let view="For You",genre="All",search="",sort="recommended";
 const liked=new Set(),saved=new Set(),following=new Set(posts.filter(p=>p.following).map(p=>p.id)),activeComments=new Set();
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
@@ -168,7 +221,7 @@ function renderStories(){
 }
 function loadMorePosts(){
  const batch=shuffle(worlds).slice(0,8);
- batch.forEach((w,i)=>{const roster=voices[w[0]]||voices[worldNames[i%worldNames.length]];if(!roster||!roster.length)return;const person=roster[Math.floor(Math.random()*roster.length)];const id="npc-extra-"+Math.random().toString(36).slice(2);posts.push({id,name:person[0],handle:person[1],world:w[0],realm:w[1],text:person[2],time:"just now",likes:Math.floor(Math.random()*9000)+4,comments:Math.random()>.65?[{name:"Passing Resident",text:shuffle(commentsPool)[0][0]}]:[],following:false})});
+ batch.forEach((w,i)=>{const roster=voices[w[0]]||voices[worldNames[i%worldNames.length]];if(!roster||!roster.length)return;const person=roster[Math.floor(Math.random()*roster.length)];const id="npc-extra-"+Math.random().toString(36).slice(2);posts.push({id,name:person[0],handle:person[1],world:w[0],realm:w[1],text:chaosText(person[2]),time:"just now",likes:Math.floor(Math.random()*9000)+4,comments:Math.random()>.42?[{name:shuffle(["Passing Resident","Local Goose Lawyer","Unpaid Wizard Intern","Pigeon With Admin Access","The Soup Witness","Regional Chaos Clerk"])[0],text:shuffle(commentsPool)[0][0]}]:[],following:false})});
  render();toast("Fresh moments arrived from "+batch.length+" worlds.")
 }
 function updateDiscovery(){
