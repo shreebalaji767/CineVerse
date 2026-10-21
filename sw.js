@@ -1,4 +1,4 @@
-const CACHE_NAME = "cineverse-static-v7";
+const CACHE_NAME = "npc-universe-static-v1";
 const APP_SHELL = ["./", "./index.html", "./manifest.webmanifest", "./favicon.svg"];
 
 self.addEventListener("install", (event) => {
@@ -9,7 +9,7 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(keys.filter((key) => key.startsWith("cineverse-static-") && key !== CACHE_NAME).map((key) => caches.delete(key)))
+      Promise.all(keys.filter((key) => key.startsWith("npc-universe-static-") && key !== CACHE_NAME).map((key) => caches.delete(key)))
     )
   );
   self.clients.claim();
