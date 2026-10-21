@@ -148,42 +148,66 @@ function canonicalPosterUrl(value){
  catch(error){return String(value||"").split(/[?#]/)[0].trim().toLowerCase()}
 }
 function imageFor(t){return t.poster||""}
-async function findRealPoster(t){
+async function findRealPosters(t){
  const key=String(t.title||"").trim().toLowerCase();
  if(posterCache.has(key))return posterCache.get(key);
  const task=(async function(){
-  const title=String(t.title||"").replace(/\s*·.*$/,"").trim();
+  const title=String(t.title||"").replace(/\\s*·.*$/,"").trim();
+  const normalizeTitle=function(value){return String(value||"").toLowerCase().replace(/[^\\p{L}\\p{N}]+/gu," ").trim()};
+  const target=normalizeTitle(title);
+  const candidates=[];
+  const addPage=function(page,priority){
+   if(!page||!page.thumbnail||!page.thumbnail.source||!page.title)return;
+   const normalized=normalizeTitle(page.title);
+   let score=priority;
+   if(normalized===target)score+=100;
+   else if(normalized.startsWith(target+" "))score+=60;
+   else if(normalized.includes(target))score+=35;
+   else if(target.includes(normalized)&&normalized.length>3)score+=15;
+   if(t.year&&String(page.title).includes(String(t.year)))score+=8;
+   candidates.push({url:page.thumbnail.source,score:score,title:page.title});
+  };
   try{
    const directUrl="https://en.wikipedia.org/w/api.php?action=query&titles="+encodeURIComponent(title)+"&prop=pageimages&piprop=thumbnail&pithumbsize=600&format=json&origin=*";
    const directResponse=await fetch(directUrl);
-   if(directResponse.ok){const directData=await directResponse.json();const directPages=Object.values((directData.query&&directData.query.pages)||{});const directPage=directPages.find(function(page){return page.thumbnail&&page.title&&page.title.toLowerCase()===title.toLowerCase()});if(directPage&&directPage.thumbnail&&directPage.thumbnail.source)return directPage.thumbnail.source}
+   if(directResponse.ok){const directData=await directResponse.json();Object.values((directData.query&&directData.query.pages)||{}).forEach(function(page){if(page.title&&normalizeTitle(page.title)===target)addPage(page,120)})}
   }catch(error){}
   try{
-   const url="https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch="+encodeURIComponent(title+" film television series anime")+"&gsrnamespace=0&gsrlimit=6&prop=pageimages&piprop=thumbnail&pithumbsize=600&format=json&origin=*";
+   const query=title+" "+(t.type==="Series"?"television series":t.category==="Anime"||t.category==="Donghua"?"anime series":"film movie");
+   const url="https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch="+encodeURIComponent(query)+"&gsrnamespace=0&gsrlimit=12&prop=pageimages&piprop=thumbnail&pithumbsize=600&format=json&origin=*";
    const response=await fetch(url);
-   if(response.ok){const data=await response.json();const pages=Object.values((data.query&&data.query.pages)||{});const normalizeTitle=function(value){return String(value||"").toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").trim()};const exact=pages.find(function(page){return page.thumbnail&&page.title&&normalizeTitle(page.title)===normalizeTitle(title)});if(exact&&exact.thumbnail&&exact.thumbnail.source)return exact.thumbnail.source}
+   if(response.ok){const data=await response.json();Object.values((data.query&&data.query.pages)||{}).forEach(function(page){addPage(page,0)})}
   }catch(error){}
-  return "";
+  const seen=new Set();
+  return candidates.sort(function(a,b){return b.score-a.score}).filter(function(item){const key=canonicalPosterUrl(item.url);if(seen.has(key))return false;seen.add(key);return true}).map(function(item){return item.url});
  })();
  posterCache.set(key,task);
  return task;
 }
+async function findRealPoster(t){
+ const posters=await findRealPosters(t);
+ return posters[0]||"";
+}
 function showPosterFallback(t,img,button){
- findRealPoster(t).then(function(url){
+ findRealPosters(t).then(function(urls){
   if(!img.isConnected)return;
-  if(url){
+  const ownerId=String(t.id||t.title);
+  let index=0;
+  function tryNext(){
+   if(!img.isConnected)return;
+   if(index>=urls.length){img.remove();if(button&&button.isConnected)showTitleArtwork(t,button);return}
+   const url=urls[index++];
    const key=canonicalPosterUrl(url);
    const owner=fallbackPosterOwners.get(key);
-   // Never silently assign the same fallback image to two different titles.
-   if(owner && owner!==String(t.id||t.title)){
-    img.remove();if(button&&button.isConnected)showTitleArtwork(t,button);return;
-   }
-   fallbackPosterOwners.set(key,String(t.id||t.title));
-   img.onerror=function(){fallbackPosterOwners.delete(key);img.remove();if(button&&button.isConnected)showTitleArtwork(t,button)};
-   img.src=url;return;
+   // Try another relevant image instead of leaving a title blank when one URL is already used.
+   if(owner&&owner!==ownerId){tryNext();return}
+   fallbackPosterOwners.set(key,ownerId);
+   img.onerror=function(){fallbackPosterOwners.delete(key);tryNext()};
+   img.onload=function(){img.onerror=null};
+   img.src=url;
   }
-  img.remove();if(button&&button.isConnected)showTitleArtwork(t,button);
- });
+  tryNext();
+ }).catch(function(){if(img.isConnected){img.remove();if(button&&button.isConnected)showTitleArtwork(t,button)}});
 }
 function showTitleArtwork(t,button){
  if(button.querySelector(".poster-art"))return;
