@@ -202,7 +202,7 @@ const chaosAftershocks=[
 ];
 const shuffle=a=>{const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b};
 function chaosText(base){const beats=shuffle(chaosAftershocks).slice(0,2);return base+"\\n\\nBREAKING UPDATE: "+beats[0]+"\\n\\nALSO, SOMEHOW: "+beats[1]}
-const chosenWorlds=shuffle(worlds).slice(0,16);
+let linkedWorld=null;if(location.hash.startsWith("#post-npc-")){let linkedId;try{linkedId=decodeURIComponent(location.hash.slice(6))}catch{linkedId=location.hash.slice(6)}linkedWorld=worlds.find(w=>"npc-"+w[0].toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")===linkedId)||null}const chosenWorlds=shuffle(worlds.filter(w=>!linkedWorld||w[0]!==linkedWorld[0])).slice(0,linkedWorld?15:16);if(linkedWorld)chosenWorlds.unshift(linkedWorld);
 const savedWorlds=new Set();
 let posts=chosenWorlds.map((w,i)=>{const roster=voices[w[0]]||voices[worldNames[i%worldNames.length]];const person=roster[Math.floor(Math.random()*roster.length)];return{id:"npc-"+w[0].toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""),name:person[0],handle:person[1],world:w[0],realm:w[1],text:chaosText(person[2]),time:["just now","1 min ago","3 min ago","7 min ago","12 min ago","21 min ago","39 min ago","1 hour ago"][i%8],likes:Math.floor(Math.random()*18000)+12,chaosCount:Math.floor(Math.random()*240)+2,shockCount:Math.floor(Math.random()*80)+1,comments:Math.random()>.42?[{name:shuffle(["Concerned Bystander","Local Goose Lawyer","Unpaid Wizard Intern","Pigeon With Admin Access","The Soup Witness","Regional Chaos Clerk"])[0],text:shuffle(commentsPool)[0][0]}]:[],following:Math.random()>.7}});
 let view="For You",genre="All",search="",sort="recommended";
