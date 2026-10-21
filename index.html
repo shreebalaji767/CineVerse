@@ -176,7 +176,7 @@ function renderGallery(){
   }
   if(t.year>=2026){const tag=document.createElement("span");tag.className="year-tag";tag.textContent="2026";button.appendChild(tag)}
   const titleTag=document.createElement("span");titleTag.className="title-tag";titleTag.textContent=t.title+" · "+t.year;button.appendChild(titleTag);
-  button.addEventListener("click",function(){openDetails(t)});
+  button.addEventListener("click",function(){showGate(t)});
   const favoriteButton=document.createElement("button");favoriteButton.type="button";favoriteButton.className="favorite-btn";favoriteButton.setAttribute("aria-label",(favorites.has(String(t.id))?"Remove ":"Add ")+t.title+" "+(favorites.has(String(t.id))?"from":"to")+" favorites");favoriteButton.setAttribute("aria-pressed",String(favorites.has(String(t.id))));favoriteButton.textContent=favorites.has(String(t.id))?"★":"☆";favoriteButton.addEventListener("click",function(){toggleFavorite(String(t.id))});
   card.appendChild(button);card.appendChild(favoriteButton);gallery.appendChild(card);
  });
@@ -184,7 +184,7 @@ function renderGallery(){
 }
 document.querySelectorAll(".category").forEach(function(btn){btn.addEventListener("click",function(){
  activeCategory=btn.dataset.category;
- document.querySelectorAll(".category").forEach(function(b){b.classList.toggle("active",b===btn)});
+ document.querySelectorAll(".category").forEach(function(b){const active=b===btn;b.classList.toggle("active",active);b.setAttribute("aria-pressed",String(active))});
  renderGallery();
 })});
 searchInput.addEventListener("input",renderGallery);
