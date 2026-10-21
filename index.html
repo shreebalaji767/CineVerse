@@ -141,6 +141,12 @@ window.addEventListener("appinstalled",function(){installPrompt=null;installBtn.
 installBtn.addEventListener("click",async function(){if(installPrompt){installPrompt.prompt();const choice=await installPrompt.userChoice;installPrompt=null;if(choice&&choice.outcome==="accepted")installBtn.textContent="Installing…";return}if(window.matchMedia("(display-mode: standalone)").matches){toast("CineVerse is already installed.");return}toast(/iphone|ipad|ipod/i.test(navigator.userAgent)?"On iPhone/iPad: open Share, then choose Add to Home Screen.":"Use your browser menu's Install app or Add to Home Screen option if available.")});
 if("serviceWorker" in navigator&&(location.protocol==="https:"||location.hostname==="localhost")){window.addEventListener("load",function(){navigator.serviceWorker.register("./sw.js").catch(function(){})})}
 const posterCache=new Map();
+// Track fallback artwork across the whole page, not just the original catalog URLs.
+const fallbackPosterOwners=new Map();
+function canonicalPosterUrl(value){
+ try{const u=new URL(value,window.location.href);u.hash="";return (u.origin+u.pathname).toLowerCase()}
+ catch(error){return String(value||"").split(/[?#]/)[0].trim().toLowerCase()}
+}
 function imageFor(t){return t.poster||""}
 async function findRealPoster(t){
  const key=String(t.title||"").trim().toLowerCase();
@@ -165,7 +171,17 @@ async function findRealPoster(t){
 function showPosterFallback(t,img,button){
  findRealPoster(t).then(function(url){
   if(!img.isConnected)return;
-  if(url){img.onerror=function(){img.remove();if(button&&button.isConnected)showTitleArtwork(t,button)};img.src=url;return}
+  if(url){
+   const key=canonicalPosterUrl(url);
+   const owner=fallbackPosterOwners.get(key);
+   // Never silently assign the same fallback image to two different titles.
+   if(owner && owner!==String(t.id||t.title)){
+    img.remove();if(button&&button.isConnected)showTitleArtwork(t,button);return;
+   }
+   fallbackPosterOwners.set(key,String(t.id||t.title));
+   img.onerror=function(){fallbackPosterOwners.delete(key);img.remove();if(button&&button.isConnected)showTitleArtwork(t,button)};
+   img.src=url;return;
+  }
   img.remove();if(button&&button.isConnected)showTitleArtwork(t,button);
  });
 }
